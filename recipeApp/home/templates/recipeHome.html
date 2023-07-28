@@ -2,10 +2,10 @@
 
 {% block start %}
 
-<div class="container mt-5">
+<div class="container mt-5 mb-3">
 
-  <form class="col-6 mx-auto card p-3 shadow-lg " enctype="multipart/form-data" method="post">
-     
+  <form class="col-6 mx-auto card p-3 shadow-lg mb-3" enctype="multipart/form-data" method="post">
+
     {% csrf_token %}
     <h2>ADD RECIPE</h2>
     <hr>
@@ -25,9 +25,24 @@
     </div>
 
     <button type="submit" class="btn btn-success">Add Recipe</button>
-    
+
   </form>
-    
+
+  <hr class="mt-5 mb-3" >
+
+  <div class="mt-10">
+    <div class="mx-auto col-6">
+      <form>
+        <div class="mb-3">
+          <label for="searchlable" class="mb-3">Search Recipe</label>
+          <input name="Search" type="text" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+    </div>
+  </div>
 
   <table class="table mt-5">
     <thead>
@@ -50,13 +65,13 @@
           <img src="/media/{{i.recepie_image}}" style="height: 100px;">
         </td>
         <td>
-          <a href = "/recipe-update/{{i.id}}" class="btn btn-success mt-1">update</a>
-          <a href = "/delete-recipe/{{i.id}}" class="btn btn-danger mt-2">Delete</a>
+          <a href="/recipe-update/{{i.id}}" class="btn btn-success mt-1">update</a>
+          <a href="/delete-recipe/{{i.id}}" class="btn btn-danger mt-2">Delete</a>
         </td>
       </tr>
 
       {% endfor %}
-      
+
     </tbody>
   </table>
 

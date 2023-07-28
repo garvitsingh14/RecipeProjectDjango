@@ -25,8 +25,11 @@ def recipe(request):
 
     
     queryset = Recipe.objects.all()
+
+    if request.GET.get('Search'):
+        queryset = queryset.filter(recepie_name__icontains = request.GET.get('Search'))
+
     context = {'recipes':queryset}
-    
     return render(request, "recipeHome.html",context)
 
 def delete_recipe(request,id):
@@ -58,4 +61,10 @@ def update_recipe(request,id):
     context = {'recipe':queryset}        
     return render(request, "updateRecipe.html",context)
     
+
+def login(request):
+    return render(request, "loginPage.html")
+
+def register(request):
+    return render(request, "registerationPage.html")
     
