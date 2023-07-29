@@ -5,33 +5,41 @@
 <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row d-flex align-items-center justify-content-center h-100">
+
         <div class="col-md-8 col-lg-7 col-xl-6">
           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
             class="img-fluid" alt="Phone image">
         </div>
+
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <h2> Welcome Back !</h2>
             <hr class="mb-8">
             <form class="mx-auto card p-3 shadow-lg " method="post">
+                {% csrf_token %}
+
+                {% if messages %}
+                {{ message.tags }}
+                <div class="alert alert-primary" role="alert">
+                  {% for message in messages %}
+                  {{ message }}
+                  {% endfor %}
+                </div>
+                {% endif %}
 
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <label for="exampleInputEmail1" class="form-label">UserName</label>
+                  <input type="text" class="form-control" name = "username" id = "exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" name = "password" id="exampleInputPassword1">
                 </div>
             
-                <p>Didn't have an account <a href="registration-page">Register</a></p>
+                <p>Didn't have an account <a href="/registeration-page/">Register</a></p>
             
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
-
-
         </div>
       </div>
     </div>

@@ -8,6 +8,20 @@
         <title>Recepie Home</title>
     </head>
     <body>
+
+        <nav class="navbar navbar-light shadow-lg" style="background-color: #e3f2fd;">
+            <!-- Navbar content -->
+            <div class="container-fluid">
+                <a class="navbar-brand">  Recipe App  </a>
+                {% if request.user.is_authenticated %}
+                    <a href="/logout/" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout  </a>
+                {% else %}
+                    <a href="/login-page/" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login  </a>
+                    {% endif %}
+            </div>
+
+        </nav>
+
         {% block start %}
 
         {% endblock %}
