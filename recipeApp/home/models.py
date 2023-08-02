@@ -9,7 +9,7 @@ class Recipe(models.Model):
     recepie_name = models.CharField(max_length=100)
     recepie_description = models.TextField(max_length=500)
     recepie_image = models.ImageField(upload_to="recipe_images")
-    recepie_view_count = models.IntegerField()
+    # recepie_view_count = models.IntegerField()
 
     def __str__(self) -> str:
         return self.recepie_name
